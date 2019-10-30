@@ -1,8 +1,12 @@
 const { Router } = require('express');
-const userController = require('./app/controllers/UserController');
+const UserController = require('./app/controllers/UserController');
+const SessionController = require('./app/controllers/SessionController');
+const authMiddleware = require('./app/middlewares/auth');
 
 const routes = new Router();
 
-routes.post('/users', userController.store);
+routes.post('/users', UserController.store);
+routes.patch('/users', authMiddleware, UserController.update);
+routes.post('/sessions', SessionController.store);
 
 module.exports = routes;
