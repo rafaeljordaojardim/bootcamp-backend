@@ -40,6 +40,5 @@ class SessionController {
       }),
     });
   }
-}
-
+} // SessionController
 module.exports = new SessionController();
