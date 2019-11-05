@@ -1,0 +1,3 @@
+ZSH_THEME="agnoster"
+
+

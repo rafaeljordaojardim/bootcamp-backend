@@ -4,6 +4,7 @@ import ProviderController from './app/controllers/ProviderController';
 import AppointmentController from './app/controllers/AppointmentController';
 import ScheduleController from './app/controllers/ScheduleController';
 import NotificationController from './app/controllers/NotificationController';
+import AvailableController from './app/controllers/AvailableController';
 
 const { Router } = require('express');
 const UserController = require('./app/controllers/UserController');
@@ -17,7 +18,10 @@ const routes = new Router();
 routes.post('/sessions', SessionController.store);
 routes.post('/users', UserController.store);
 routes.use(authMiddleware);
+
 routes.get('/providers', ProviderController.index);
+routes.get('/providers/:providerId/available', AvailableController.index);
+
 routes.patch('/users', UserController.update);
 routes.post('/files', upload.single('file'), FileController.store);
 
@@ -29,4 +33,5 @@ routes.get('/schedule', ScheduleController.index);
 
 routes.get('/notifications', NotificationController.index);
 routes.patch('/notifications/:id', NotificationController.update);
+
 module.exports = routes;

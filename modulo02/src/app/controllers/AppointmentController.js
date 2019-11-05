@@ -15,7 +15,7 @@ class AppointmentController {
     const appointments = await Appointment.findAll({
       where: { user_id: req.userId, canceled_at: null },
       order: ['date'],
-      attributes: ['id', 'date'],
+      attributes: ['id', 'date', 'past'],
       limit: 20,
       offset: (page - 1) * 20, // mines 1 and times 20 - page 1 = 1 - 1 * 20 = 0 it will skipe 0 registers
       include: [
